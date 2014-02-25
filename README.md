@@ -51,3 +51,27 @@ rake (10.1.0)
 rdoc (4.1.0)
 test-unit (2.1.1.0)
 ```
+
+## 安装native c gem  
+这里以mysql为例。首先从龟壳下载并解压mysql-connector-c（或者noinstall），
+然后去devkit中打开mingw-msys，输入：
+```bash
+$ gem install mysql2 --no-ri --no-rdoc -- --with-mysql-dir=/d/MySQL/mysql-connector-c-6.1.3-win32/
+Fetching: mysql2-0.3.15.gem (100%)
+Building native extensions with: '--with-mysql-dir=d:/MySQL/mysql-connector-c-6.
+1.3-win32/'
+This could take a while...
+Successfully installed mysql2-0.3.15
+1 gem installed
+```
+
+再打开cmd，用irb测试：
+```bat
+CMD> irb
+DL is deprecated, please use Fiddle
+irb(main):001:0> require 'mysql2'
+=> true
+irb(main):002:0>
+```
+
+结束……换地方去the villar club。
