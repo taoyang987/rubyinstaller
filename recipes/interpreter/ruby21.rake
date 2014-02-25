@@ -109,6 +109,10 @@ namespace(:interpreter) do
           package.configure_options << "--host=#{compiler.host}"
         end
 
+        cd package.target do
+          sh "sh -c \"autoconf\""
+        end
+
         cd package.build_target do
           sh "sh -c \"#{relative_path}/configure #{package.configure_options.join(' ')} --prefix=#{File.join(RubyInstaller::ROOT, package.install_target)}\""
         end

@@ -15,6 +15,28 @@ module DevKitInstaller
     'libz-1.2.3-1-mingw32-dll-1.tar.gz'
   ]
 
+  # patch: add latest mingwbuilds x86
+  COMPILERS['mingwbuilds-32-4.8.1'] =
+    OpenStruct.new(
+      :version => 'mingwbuilds-32-4.8.1',
+      :programs => [ :gcc, :cpp, :'g++' ],
+      :program_prefix => nil,
+      :url_1 => 'http://downloads.sourceforge.net/mingwbuilds',
+      :url_2 => 'http://downloads.sourceforge.net/mingw',
+      :url_3 => 'http://downloads.sourceforge.net/gnuwin32',
+      :target => 'sandbox/devkit/mingw',
+      :relocate => 'sandbox/devkit/mingw/mingw32',
+      :files => {
+        :url_1 => [
+          "x32-4.8.1-release-win32-sjlj-rev5.7z"
+        ],
+        :url_2 => COMMON_MSYS,
+        :url_3 => [
+          'which-2.20-bin.zip'
+        ],
+      }
+    )
+
   COMPILERS['mingwbuilds-32-4.7.3'] =
     OpenStruct.new(
       :version => 'mingwbuilds-32-4.7.3',
