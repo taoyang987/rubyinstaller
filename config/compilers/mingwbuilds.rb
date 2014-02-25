@@ -16,6 +16,50 @@ module DevKitInstaller
   ]
 
   # patch: add latest mingwbuilds x86
+  COMPILERS['mingwbuilds-32-4.9.0'] =
+    OpenStruct.new(
+      :version => 'mingwbuilds-32-4.9.0',
+      :programs => [ :gcc, :cpp, :'g++' ],
+      :program_prefix => nil,
+      :url_1 => 'http://downloads.sourceforge.net/mingwbuilds',
+      :url_2 => 'http://downloads.sourceforge.net/mingw',
+      :url_3 => 'http://downloads.sourceforge.net/gnuwin32',
+      :target => 'sandbox/devkit/mingw',
+      :relocate => 'sandbox/devkit/mingw/mingw32',
+      :files => {
+        :url_1 => [
+          "x32-4.9.0-snapshot-20130718-rev201015-win32-sjlj.7z"
+        ],
+        :url_2 => COMMON_MSYS,
+        :url_3 => [
+          'which-2.20-bin.zip'
+        ],
+      }
+    )
+
+  COMPILERS['mingw64-64-4.8.0'] =
+    OpenStruct.new(
+      :version => 'mingw64-64-4.8.0',
+      :programs => [ :gcc, :cpp, :'g++' ],
+      :program_prefix => nil,
+      :url_1 => 'http://downloads.sourceforge.net/mingw-w64',
+      :url_2 => 'http://downloads.sourceforge.net/mingw',
+      :url_3 => 'http://downloads.sourceforge.net/gnuwin32',
+      :target => 'sandbox/devkit/mingw',
+      :relocate => 'sandbox/devkit/mingw/mingw64',
+      :host => 'x86_64-w64-mingw32',
+      :files => {
+        :url_1 => [
+          'x86_64-w64-mingw32-gcc-4.8.0-win64_rubenvb.7z',
+          'x86_64-w64-mingw32-mingw-w64-update-trunk-20130115_rubenvb.tar.xz'
+        ],
+        :url_2 => COMMON_MSYS,
+        :url_3 => [
+          'which-2.20-bin.zip'
+        ],
+      }
+    )
+
   COMPILERS['mingwbuilds-32-4.8.1'] =
     OpenStruct.new(
       :version => 'mingwbuilds-32-4.8.1',
